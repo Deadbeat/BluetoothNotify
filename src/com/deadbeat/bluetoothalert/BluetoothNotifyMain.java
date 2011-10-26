@@ -17,7 +17,6 @@ public class BluetoothNotifyMain extends Activity {
 	private final int KILLSVC = Menu.FIRST + 1;
 	private BluetoothNotifyWorker worker;
 
-	// Making change to commit
 	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle btNotify) {
