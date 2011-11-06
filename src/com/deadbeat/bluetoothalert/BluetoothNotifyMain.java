@@ -33,39 +33,52 @@ public class BluetoothNotifyMain extends Activity {
 		// Enable/Disable logging
 		globals.setLoggingEnabled(true);
 		setWorker(new BluetoothNotifyWorker(this, globals));
-		AppDetector detect = new AppDetector();
-
 		getWorker().doLog("-------------------------------");
 		getWorker().doLog("--> Client starting up");
 
+		// Check for free version installed
+		// If installed, we can not continue to run because of service conflict
+		AppDetector detect = new AppDetector();
 		if (detect.isAppInstalled(this, "com.deadbeat.bluetoothalertfree") == true) {
 			getWorker().shutdownOnConflict();
 		}
 
+		// Start service
 		getWorker().startBTNotifyService();
 
+		// Display device list
 		setContentView(R.layout.deviceselect);
-
 		getWorker().getBTDevices();
 		getWorker().buildDeviceListView(detect.getVersion(this, this.getClass().getPackage().getName()));
 	}
 
+	/*
+	 * Create options menu Menu includes one option to shutdown app and kill
+	 * service
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, this.KILLSVC, 0, "Stop Bluetooth Notify Service (Not Recommended)");
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	/*
+	 * Option selected
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case KILLSVC:
-			// Prompt user for confirmation
+			// Prompt user for confirmation before shutting down
 			DialogInterface.OnClickListener confirmListener = new DialogInterface.OnClickListener() {
 
 				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					switch (which) {
+				public void onClick(DialogInterface dialog, int selectedButton) {
+					switch (selectedButton) {
 					case DialogInterface.BUTTON_POSITIVE:
 						// User is an Idiot, and said "Yes"
 						// Kill service
