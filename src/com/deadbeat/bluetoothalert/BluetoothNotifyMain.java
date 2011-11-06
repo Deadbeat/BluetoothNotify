@@ -81,8 +81,8 @@ public class BluetoothNotifyMain extends Activity {
 			builder.setMessage(
 					"Are you sure you want to stop the service?\n\n"
 							+ "Without BluetoothNotify Service, you will not recieve ANY device notifications.\n\n"
-							+ "NOTE: The service will be restarted when you re-open this application.").setPositiveButton("Yes",
-					confirmListener).setNegativeButton("No", confirmListener).show();
+							+ "NOTE: The service will be restarted when you re-open this application.")
+					.setPositiveButton("Yes", confirmListener).setNegativeButton("No", confirmListener).show();
 		}
 		return super.onOptionsItemSelected(item);
 	}
