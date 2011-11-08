@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 import com.deadbeat.bluetoothnotifylib.AppDetector;
 import com.deadbeat.bluetoothnotifylib.BluetoothNotifyWorker;
-import com.deadbeat.bluetoothnotifylib.Globals;
 
 public class BluetoothNotifyMain extends Activity {
 
@@ -25,16 +24,9 @@ public class BluetoothNotifyMain extends Activity {
 	@Override
 	protected void onCreate(Bundle btNotify) {
 		super.onCreate(btNotify);
-		Globals globals = new Globals();
-
-		// Define free/paid version
-		globals.setFreeVersion(false);
-
-		// Enable/Disable logging
-		globals.setLoggingEnabled(true);
-		setWorker(new BluetoothNotifyWorker(this, globals));
+		setWorker(new BluetoothNotifyWorker(this));
 		getWorker().doLog("-------------------------------");
-		getWorker().doLog("--> Client starting up");
+		getWorker().doLog("--> " + getWorker().getTimestamp() + " Client starting up");
 
 		// Check for free version installed
 		// If installed, we can not continue to run because of service conflict
