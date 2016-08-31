@@ -22,25 +22,12 @@
 		<item>ffffffff</item>
 		<item>ffffff00</item>
 	</string-array>
-
+	
 	<string-array name="vibratePatternNames">
 		<item>Default</item>
-		<item>Custom</item>
-		<item>Short</item>
-		<item>Long</item>
-		<item>Multiple Short</item>
-		<item>Multiple Long</item>
-		<item>Short then Long</item>
-		<item>Long then Short</item>
 	</string-array>
 	<string-array name="vibratePatternPatterns">
 		<item>1</item>
-		<item>9</item>
-		<item>2</item>
-		<item>3</item>
-		<item>5</item>
-		<item>6</item>
-		<item>7</item>
-		<item>8</item>
 	</string-array>
+	
 </resources>

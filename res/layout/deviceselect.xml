@@ -28,7 +28,6 @@
     		  android:gravity="right"
     		  android:layout_alignParentBottom="true"
     		  android:text="version"/>
-    		  
     <!--<RelativeLayout
     		android:id="@+id/innerlayoutforclose"
     		android:layout_height="wrap_content"
